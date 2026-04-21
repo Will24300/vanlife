@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { homeBg } from "../images";
+import { Link } from "react-router";
 // import homeBg from "../images";
 
 function Home() {
@@ -19,9 +20,12 @@ function Home() {
           Add adventure to your life by joining the #vanlife movement. Rent the
           perfect van to make your perfect road trip.
         </p>
-        <button className="bg-[#FF8C38] text-white py-2 px-10 cursor-pointer">
+        <Link
+          to={"/vans"}
+          className="bg-[#FF8C38] text-white py-2 px-10 cursor-pointer rounded"
+        >
           Find your van
-        </button>
+        </Link>
       </section>
       <Footer />
     </>

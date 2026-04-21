@@ -7,7 +7,7 @@ function About() {
   return (
     <>
       <Navbar />
-      <section className="bg-[#FFF7ED]">
+      <section className="bg-[#fff7ed]">
         <img src={aboutBg} alt="about hero img" className="h-[60vh] w-full" />
         <div className="p-10 w3/4">
           <h1 className="font-bold text-[32px]">
