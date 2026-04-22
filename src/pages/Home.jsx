@@ -1,14 +1,10 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { homeBg } from "../images";
 import { Link } from "react-router";
-// import homeBg from "../images";
 
 function Home() {
   return (
     <>
-      <Navbar />
       <section
         style={{ backgroundImage: `url(${homeBg})` }}
         className="h-[80vh] bg-cover bg-repeat text-white flex flex-col justify-center items-center gap-5"
@@ -27,7 +23,6 @@ function Home() {
           Find your van
         </Link>
       </section>
-      <Footer />
     </>
   );
 }

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import { Link, NavLink, useParams } from "react-router";
 import { ArrowBigLeft } from "lucide-react";
 import { ArrowLeft } from "lucide-react";
 
@@ -25,7 +23,6 @@ function VanDetails() {
 
   return (
     <>
-      <Navbar />
       <section className="p-8">
         <Link
           to={"/vans"}
@@ -53,8 +50,6 @@ function VanDetails() {
           </button>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }

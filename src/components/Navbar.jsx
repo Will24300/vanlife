@@ -10,6 +10,14 @@ function Navbar() {
       <ul className="flex justify-end items-center gap-6 text-[#4D4D4D]">
         <li>
           <NavLink
+            to={"/host"}
+            className={({ isActive }) => (isActive ? "underline" : "")}
+          >
+            Host
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             to={"/about"}
             className={({ isActive }) => (isActive ? "underline" : "")}
           >

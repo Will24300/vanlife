@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { Link } from "react-router";
 
 function Vans() {
@@ -31,7 +29,6 @@ function Vans() {
 
   return (
     <>
-      <Navbar />
       <section className="p-8 bg-[#fff7ed] min-h-[70vh]">
         <div>
           <h2 className="font-bold text-[32px]">Explore our van options</h2>
@@ -95,7 +92,6 @@ function Vans() {
           </div>
         )}
       </section>
-      <Footer />
     </>
   );
 }

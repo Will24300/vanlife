@@ -1,12 +1,9 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { aboutBg } from "../images";
 
 function About() {
   return (
     <>
-      <Navbar />
       <section className="bg-[#fff7ed]">
         <img src={aboutBg} alt="about hero img" className="h-[60vh] w-full" />
         <div className="p-10 w3/4">
@@ -34,7 +31,6 @@ function About() {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 }
