@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 function Vans() {
   const [data, setData] = useState(null);
-  const [vanType, setVanType] = useState("simple");
+  const [vanType, setVanType] = useState("");
   const colors = {
     simple: "#E17654",
     rugged: "#115E59",
@@ -20,8 +20,13 @@ function Vans() {
   const handleClick = (name) => {
     setVanType(name.toLowerCase());
   };
+  let filteredData;
 
-  const filteredData = data.filter((d) => d.type !== vanType);
+  if (data && vanType !== "") {
+    filteredData = data.filter((d) => d.type === vanType);
+  } else {
+    filteredData = data;
+  }
 
   return (
     <>
@@ -31,7 +36,7 @@ function Vans() {
           <h2 className="font-bold text-[32px]">Explore our van options</h2>
           <div className="flex justify-between items-center">
             <ul className="flex justify-between items-center gap-5 my-5">
-              {types.map((type, index) => (
+              {/* {types.map((type, index) => (
                 <li
                   key={index}
                   className="bg-[#FFEAD0] py-1 px-5 rounded cursor-pointer"
@@ -39,9 +44,30 @@ function Vans() {
                 >
                   {type}
                 </li>
-              ))}
+              ))} */}
+              {types.map((type, index) => {
+                const isSelected = vanType === type.toLowerCase();
+                return (
+                  <li
+                    key={index}
+                    onClick={() => handleClick(type)}
+                    className={`py-1 px-5 rounded cursor-pointer transition-colors ${
+                      isSelected
+                        ? "bg-[#E17654] text-white" // Active styles
+                        : "bg-[#FFEAD0] text-black" // Inactive styles
+                    }`}
+                  >
+                    {type}
+                  </li>
+                );
+              })}
             </ul>
-            <p className="underline cursor-pointer">Clear filter</p>
+            <p
+              className="underline cursor-pointer"
+              onClick={() => setVanType("")}
+            >
+              Clear filter
+            </p>
           </div>
         </div>
         {filteredData && (
@@ -67,7 +93,7 @@ function Vans() {
                     }}
                     className="text-white py-1 px-5 rounded"
                   >
-                    {van.type}
+                    {van.type.charAt(0).toUpperCase() + van.type.slice(1)}
                   </button>
                 </div>
               </div>
