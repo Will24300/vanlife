@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { Link } from "react-router";
 
 function Vans() {
   const [data, setData] = useState(null);
@@ -36,15 +37,6 @@ function Vans() {
           <h2 className="font-bold text-[32px]">Explore our van options</h2>
           <div className="flex justify-between items-center">
             <ul className="flex justify-between items-center gap-5 my-5">
-              {/* {types.map((type, index) => (
-                <li
-                  key={index}
-                  className="bg-[#FFEAD0] py-1 px-5 rounded cursor-pointer"
-                  onClick={() => handleClick(type)}
-                >
-                  {type}
-                </li>
-              ))} */}
               {types.map((type, index) => {
                 const isSelected = vanType === type.toLowerCase();
                 return (
@@ -73,30 +65,32 @@ function Vans() {
         {filteredData && (
           <div className="grid grid-cols-2 gap-5 mt-3">
             {filteredData.map((van) => (
-              <div key={van.id}>
-                <img
-                  src={van.imageUrl}
-                  alt={van.description}
-                  className="rounded-2xl"
-                />
+              <Link to={`/vans/${van.id}`} key={van.id}>
                 <div>
-                  <div className=" font-semibold text-[20px] flex justify-between  my-3">
-                    <p>{van.name}</p>
-                    <p className="leading-5">
-                      ${van.price} <br />{" "}
-                      <span className="text-sm font-normal">/day</span>
-                    </p>
+                  <img
+                    src={van.imageUrl}
+                    alt={van.description}
+                    className="rounded-2xl"
+                  />
+                  <div>
+                    <div className=" font-semibold text-[20px] flex justify-between  my-3">
+                      <p>{van.name}</p>
+                      <p className="leading-5">
+                        ${van.price} <br />{" "}
+                        <span className="text-sm font-normal">/day</span>
+                      </p>
+                    </div>
+                    <button
+                      style={{
+                        backgroundColor: colors[van.type],
+                      }}
+                      className="text-white py-1 px-5 rounded cursor-pointer"
+                    >
+                      {van.type.charAt(0).toUpperCase() + van.type.slice(1)}
+                    </button>
                   </div>
-                  <button
-                    style={{
-                      backgroundColor: colors[van.type] && colors[van.type],
-                    }}
-                    className="text-white py-1 px-5 rounded"
-                  >
-                    {van.type.charAt(0).toUpperCase() + van.type.slice(1)}
-                  </button>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}
