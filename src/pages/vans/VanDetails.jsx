@@ -25,7 +25,8 @@ function VanDetails() {
     <>
       <section className="p-8">
         <Link
-          to={"/vans"}
+          to=".."
+          relative="path"
           className="flex justify-start items-center gap-1 my-10"
         >
           <ArrowLeft size={15} color="gray" />

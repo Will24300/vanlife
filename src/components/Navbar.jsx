@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router";
 
 function Navbar() {
   return (
-    <nav className="bg-[#fff7ed] flex justify-between items-center py-7 px-5">
+    <nav className="bg-[#fff7ed] flex justify-between items-center px-8 py-5">
       <h1 className="font-black text-[25px]">
         <Link to={"/"}>#VANLIFE</Link>
       </h1>

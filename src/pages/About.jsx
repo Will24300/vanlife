@@ -1,5 +1,6 @@
 import React from "react";
 import { aboutBg } from "../images";
+import { Link } from "react-router";
 
 function About() {
   return (
@@ -25,9 +26,12 @@ function About() {
               Your destination is waiting. <br />
               Your van is ready.
             </p>
-            <button className="bg-black text-white py-2 px-8 rounded cursor-pointer">
+            <Link
+              to={"/vans"}
+              className="bg-black text-white py-2 px-8 rounded cursor-pointer"
+            >
               Expore our vans
-            </button>
+            </Link>
           </div>
         </div>
       </section>

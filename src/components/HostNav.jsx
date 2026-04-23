@@ -4,23 +4,37 @@ import { Link, NavLink } from "react-router";
 const HostNav = () => {
   return (
     <>
-      <nav className="flex justify-start items-center gap-5">
+      <nav className="flex justify-start items-center gap-5 px-8 mt-5 text-[#4D4D4D]">
         <NavLink
-          to={"/host"}
+          to={"."}
           end
-          className={({ isActive }) => (isActive ? "underline font-bold" : "")}
+          className={({ isActive }) =>
+            isActive ? "underline font-bold text-black" : ""
+          }
         >
           Dahsboard
         </NavLink>
         <NavLink
-          to={"/host/income"}
-          className={({ isActive }) => (isActive ? "underline font-bold" : "")}
+          to={"income"}
+          className={({ isActive }) =>
+            isActive ? "underline font-bold text-black" : ""
+          }
         >
           Income
         </NavLink>
         <NavLink
-          to={"/host/reviews"}
-          className={({ isActive }) => (isActive ? "underline font-bold" : "")}
+          to={"vans"}
+          className={({ isActive }) =>
+            isActive ? "underline font-bold text-black" : ""
+          }
+        >
+          Vans
+        </NavLink>
+        <NavLink
+          to={"reviews"}
+          className={({ isActive }) =>
+            isActive ? "underline font-bold text-black" : ""
+          }
         >
           Reviews
         </NavLink>
