@@ -1,13 +1,14 @@
 import React from "react";
 import { Outlet } from "react-router";
+import HostNav from "./HostNav";
 
-function Dashboard() {
+function HostLayout() {
   return (
     <>
-      <div>Dashboard goes here </div>
+      <HostNav />
       <Outlet />
     </>
   );
 }
 
-export default Dashboard;
+export default HostLayout;

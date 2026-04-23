@@ -11,7 +11,9 @@ function Navbar() {
         <li>
           <NavLink
             to={"/host"}
-            className={({ isActive }) => (isActive ? "underline" : "")}
+            className={({ isActive }) =>
+              isActive ? "underline font-bold" : ""
+            }
           >
             Host
           </NavLink>
@@ -19,7 +21,9 @@ function Navbar() {
         <li>
           <NavLink
             to={"/about"}
-            className={({ isActive }) => (isActive ? "underline" : "")}
+            className={({ isActive }) =>
+              isActive ? "underline font-bold" : ""
+            }
           >
             About
           </NavLink>
@@ -28,7 +32,9 @@ function Navbar() {
         <li>
           <NavLink
             to={"/vans"}
-            className={({ isActive }) => (isActive ? "underline" : "")}
+            className={({ isActive }) =>
+              isActive ? "underline font-bold" : ""
+            }
           >
             Vans
           </NavLink>
