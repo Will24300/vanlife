@@ -18,6 +18,7 @@ function HostVanDetails() {
       .then((res) => res.json())
       .then((d) => setVanDetail(d.vans));
   }, [id]);
+
   // console.log(van);
 
   return (
@@ -41,7 +42,7 @@ function HostVanDetails() {
               >
                 {van.type.slice(0, 1).toUpperCase() + van.type.slice(1)}
               </button>
-              <h2 className="font-bold text-[26px]">{van.name}</h2>
+              <h2 className="font-bold text-[26px] my-2">{van.name}</h2>
               <p>
                 <span className="font-bold">${van.price}</span>/day
               </p>
@@ -74,7 +75,15 @@ function HostVanDetails() {
               Photos
             </NavLink>
           </nav>
-          <Outlet />
+          <Outlet
+            context={{
+              name: van.name,
+              desc: van.description,
+              image: van.imageUrl,
+              type: van.type,
+              price: van.price,
+            }}
+          />
         </div>
       ) : (
         <p>Loading...</p>
@@ -82,5 +91,6 @@ function HostVanDetails() {
     </section>
   );
 }
+// naem = van.name, van.description, van.imageUrl, van.type, van.price
 
 export default HostVanDetails;
