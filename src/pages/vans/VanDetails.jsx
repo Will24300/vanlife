@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, useParams } from "react-router";
+import { Link, NavLink, useLocation, useParams } from "react-router";
 import { ArrowBigLeft } from "lucide-react";
 import { ArrowLeft } from "lucide-react";
 
 function VanDetails() {
   const { id } = useParams();
   const [data, setData] = useState(null);
+  const location = useLocation();
+  // console.log(location);
+
   const colors = {
     simple: "#E17654",
     rugged: "#115E59",
@@ -21,17 +24,20 @@ function VanDetails() {
     return <h2 className="p-8">Loading van details...</h2>;
   }
 
+  const search = location.state?.search || "";
+  const type = location.state?.type || "all";
+
   return (
     <>
       <section className="p-8">
         <Link
-          to=".."
+          to={`..${search}`}
           relative="path"
           className="flex justify-start items-center gap-1 my-10"
         >
           <ArrowLeft size={15} color="gray" />
 
-          <span className="underline">Back to all vans</span>
+          <span className="underline">Back to {type} vans</span>
         </Link>
         <div>
           <img src={data.imageUrl} alt="van image" className="rounded" />

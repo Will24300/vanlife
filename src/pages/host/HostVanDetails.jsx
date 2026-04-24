@@ -91,6 +91,5 @@ function HostVanDetails() {
     </section>
   );
 }
-// naem = van.name, van.description, van.imageUrl, van.type, van.price
 
 export default HostVanDetails;

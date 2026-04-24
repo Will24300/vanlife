@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 
 function Vans() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const filterType = searchParams.get("type");
+
   const [data, setData] = useState(null);
-  const [vanType, setVanType] = useState("");
+  // const [vanType, setVanType] = useState("");
   const colors = {
     simple: "#E17654",
     rugged: "#115E59",
@@ -17,12 +20,13 @@ function Vans() {
   }, []);
 
   const handleClick = (name) => {
-    setVanType(name.toLowerCase());
+    // setVanType(name.toLowerCase());
+    setSearchParams({ type: name });
   };
   let filteredData;
 
-  if (data && vanType !== "") {
-    filteredData = data.filter((d) => d.type === vanType);
+  if (data && filterType) {
+    filteredData = data.filter((d) => d.type === filterType.toLowerCase());
   } else {
     filteredData = data;
   }
@@ -35,7 +39,7 @@ function Vans() {
           <div className="flex justify-between items-center">
             <ul className="flex justify-between items-center gap-5 my-5">
               {types.map((type, index) => {
-                const isSelected = vanType === type.toLowerCase();
+                const isSelected = filterType === type;
                 return (
                   <li
                     key={index}
@@ -51,18 +55,27 @@ function Vans() {
                 );
               })}
             </ul>
-            <p
-              className="underline cursor-pointer"
-              onClick={() => setVanType("")}
-            >
-              Clear filter
-            </p>
+            {filterType && (
+              <p
+                className="underline cursor-pointer"
+                onClick={() => setSearchParams({})}
+              >
+                Clear filter
+              </p>
+            )}
           </div>
         </div>
         {filteredData && (
           <div className="grid grid-cols-2 gap-5 mt-3">
             {filteredData.map((van) => (
-              <Link to={`/vans/${van.id}`} key={van.id}>
+              <Link
+                to={`${van.id}`}
+                state={{
+                  search: `?${searchParams.toString()}`,
+                  type: filterType,
+                }}
+                key={van.id}
+              >
                 <div>
                   <img
                     src={van.imageUrl}
