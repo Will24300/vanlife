@@ -1,15 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router";
+import { Link, useLoaderData } from "react-router";
+import { getHostVans } from "../../api";
+
+export function loader() {
+  return getHostVans();
+}
 
 const HostVans = () => {
-  const [vans, setVans] = useState(null);
-  useEffect(() => {
-    fetch("/api/host/vans")
-      .then((res) => res.json())
-      .then((d) => setVans(d.vans));
-  }, []);
+  const vans = useLoaderData();
 
   return (
     <section className="p-8">

@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, useLocation, useParams } from "react-router";
+import {
+  Link,
+  NavLink,
+  useLoaderData,
+  useLocation,
+  useParams,
+} from "react-router";
 import { ArrowBigLeft } from "lucide-react";
 import { ArrowLeft } from "lucide-react";
+import { getVans } from "../../api";
+export function loader({ params }) {
+  return getVans(params.id);
+}
 
 function VanDetails() {
-  const { id } = useParams();
-  const [data, setData] = useState(null);
+  const data = useLoaderData();
   const location = useLocation();
-  // console.log(location);
 
   const colors = {
     simple: "#E17654",
     rugged: "#115E59",
     luxury: "#161616",
   };
-  useEffect(() => {
-    fetch(`/api/vans/${id}`)
-      .then((res) => res.json())
-      .then((d) => setData(d.vans));
-  }, [id]);
 
   if (!data) {
     return <h2 className="p-8">Loading van details...</h2>;

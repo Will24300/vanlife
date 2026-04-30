@@ -2,24 +2,30 @@ import { ArrowLeft } from "lucide-react";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { NavLink, Link, useParams, Outlet } from "react-router";
+import { NavLink, Link, useParams, Outlet, useLoaderData } from "react-router";
 import VanDetailsLayout from "../../components/VanDetailsLayout";
+import { getHostVans } from "../../api";
+
+export function loader({ params }) {
+  return getHostVans(params.id);
+}
 
 function HostVanDetails() {
+  const van = useLoaderData();
   const { id } = useParams();
-  const [van, setVanDetail] = useState(null);
+  // const [van, setVanDetail] = useState(null);
   const colors = {
     simple: "#E17654",
     rugged: "#115E59",
     luxury: "#161616",
   };
-  useEffect(() => {
-    fetch(`/api/host/vans/${id}`)
-      .then((res) => res.json())
-      .then((d) => setVanDetail(d.vans));
-  }, [id]);
+  // useEffect(() => {
+  //   fetch(`/api/host/vans/${id}`)
+  //     .then((res) => res.json())
+  //     .then((d) => setVanDetail(d.vans));
+  // }, [id]);
 
-  // console.log(van);
+  console.log(van);
 
   return (
     <section className="px-8 min-h-[60vh] mb-7">

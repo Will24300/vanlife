@@ -1,34 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router";
+import { Link, useLoaderData, useSearchParams } from "react-router";
+import { getVans } from "../../api";
+
+export function loader() {
+  return getVans();
+}
 
 function Vans() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [error, setError] = useState(null);
+  const data = useLoaderData();
   const filterType = searchParams.get("type");
 
-  const [data, setData] = useState(null);
-  // const [vanType, setVanType] = useState("");
   const colors = {
     simple: "#E17654",
     rugged: "#115E59",
     luxury: "#161616",
   };
   const types = ["Simple", "Rugged", "Luxury"];
-  useEffect(() => {
-    fetch("/api/vans")
-      .then((res) => res.json())
-      .then((d) => setData(d.vans));
-  }, []);
 
-  const handleClick = (name) => {
-    // setVanType(name.toLowerCase());
-    setSearchParams({ type: name });
-  };
-  let filteredData;
+  const filteredData = filterType
+    ? data.filter((d) => d.type === filterType.toLowerCase())
+    : data;
 
-  if (data && filterType) {
-    filteredData = data.filter((d) => d.type === filterType.toLowerCase());
-  } else {
-    filteredData = data;
+  if (error) {
+    return <h2>There was an error : {error}</h2>;
   }
 
   return (
@@ -43,7 +39,7 @@ function Vans() {
                 return (
                   <li
                     key={index}
-                    onClick={() => handleClick(type)}
+                    onClick={() => setSearchParams({ type: type })}
                     className={`py-1 px-5 rounded cursor-pointer transition-colors ${
                       isSelected
                         ? "bg-[#E17654] text-white" // Active styles

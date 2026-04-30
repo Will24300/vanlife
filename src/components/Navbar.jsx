@@ -1,3 +1,4 @@
+import { User2 } from "lucide-react";
 import React from "react";
 import { Link, NavLink } from "react-router";
 
@@ -39,6 +40,9 @@ function Navbar() {
             Vans
           </NavLink>
         </li>
+        <Link to={"login"}>
+          <User2 />
+        </Link>
       </ul>
     </nav>
   );
