@@ -3,7 +3,6 @@ import { useRouteError } from "react-router";
 
 function Error() {
   const error = useRouteError();
-
   return (
     <div className="h-[75vh]">
       <h1>Error: {error.message}</h1>
