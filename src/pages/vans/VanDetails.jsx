@@ -5,7 +5,7 @@ import {
   useLoaderData,
   useLocation,
   useParams,
-} from "react-router";
+} from "react-router-dom";
 import { ArrowBigLeft } from "lucide-react";
 import { ArrowLeft } from "lucide-react";
 import { getVans } from "../../api";

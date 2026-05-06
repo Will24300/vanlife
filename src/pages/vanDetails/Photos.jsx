@@ -1,5 +1,5 @@
 import React from "react";
-import { useOutletContext } from "react-router";
+import { useOutletContext } from "react-router-dom";
 
 const Photos = () => {
   const { image } = useOutletContext();

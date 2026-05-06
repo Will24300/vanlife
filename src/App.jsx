@@ -5,7 +5,7 @@ import {
   Route,
   RouterProvider,
   Routes,
-} from "react-router";
+} from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Login from "./pages/Login";
@@ -49,7 +49,12 @@ const router = createBrowserRouter(
         element={<VanDetails />}
         loader={vanDetailsLoader}
       />
-      <Route path="host" element={<HostLayout />}>
+      <Route
+        path="host"
+        element={<HostLayout />}
+        // loader={async () => await requireAuth()}
+        // errorElement={<Error />}
+      >
         <Route
           index
           element={<Dashboard />}
@@ -63,12 +68,12 @@ const router = createBrowserRouter(
         <Route
           path="income"
           element={<Income />}
-          // loader={async () => await requireAuth()}
+          loader={async () => await requireAuth()}
         />
         <Route
           path="reviews"
           element={<Reviews />}
-          // loader={async () => await requireAuth()}
+          loader={async () => await requireAuth()}
         />
         <Route path="vans" element={<HostVans />} loader={hostVansLoader} />
         <Route
@@ -79,17 +84,17 @@ const router = createBrowserRouter(
           <Route
             index
             element={<Details />}
-            // loader={async () => await requireAuth()}
+            loader={async () => await requireAuth()}
           />
           <Route
             path="photo"
             element={<Photos />}
-            // loader={async () => await requireAuth()}
+            loader={async () => await requireAuth()}
           />
           <Route
             path="pricing"
             element={<Princing />}
-            // loader={async () => await requireAuth()}
+            loader={async () => await requireAuth()}
           />
         </Route>
       </Route>

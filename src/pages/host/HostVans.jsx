@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Link, useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router-dom";
 import { getHostVans } from "../../api";
 
 export function loader() {

@@ -1,6 +1,6 @@
 import React from "react";
 import { aboutBg } from "../images";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 function About() {
   return (

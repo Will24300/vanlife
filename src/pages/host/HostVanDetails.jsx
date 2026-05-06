@@ -2,7 +2,13 @@ import { ArrowLeft } from "lucide-react";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { NavLink, Link, useParams, Outlet, useLoaderData } from "react-router";
+import {
+  NavLink,
+  Link,
+  useParams,
+  Outlet,
+  useLoaderData,
+} from "react-router-dom";
 import VanDetailsLayout from "../../components/VanDetailsLayout";
 import { getHostVans } from "../../api";
 
