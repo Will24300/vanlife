@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Login from "./pages/Login";
+import Login, { loginLoader } from "./pages/Login";
 import Layout from "./components/Layout";
 import Vans, { loader as vansLoader } from "./pages/vans/Vans";
 import VanDetails, {
@@ -43,27 +43,17 @@ const router = createBrowserRouter(
         loader={vansLoader}
         errorElement={<Error />}
       />
-      <Route path="login" element={<Login />} />
+      <Route path="login" element={<Login />} loader={loginLoader} />
       <Route
         path="vans/:id"
         element={<VanDetails />}
         loader={vanDetailsLoader}
       />
-      <Route
-        path="host"
-        element={<HostLayout />}
-        // loader={async () => await requireAuth()}
-        // errorElement={<Error />}
-      >
+      <Route path="host" element={<HostLayout />}>
         <Route
           index
           element={<Dashboard />}
           loader={async () => await requireAuth()}
-          // loader={async () => {
-          //   const auth = await requireAuth();
-          //   if (auth) return auth;
-          //   return null;
-          // }}
         />
         <Route
           path="income"

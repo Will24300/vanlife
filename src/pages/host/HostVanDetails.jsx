@@ -11,25 +11,22 @@ import {
 } from "react-router-dom";
 import VanDetailsLayout from "../../components/VanDetailsLayout";
 import { getHostVans } from "../../api";
+import { requireAuth } from "../../util";
 
-export function loader({ params }) {
+export async function loader({ params }) {
+  await requireAuth();
   return getHostVans(params.id);
 }
 
 function HostVanDetails() {
   const van = useLoaderData();
   const { id } = useParams();
-  // const [van, setVanDetail] = useState(null);
+
   const colors = {
     simple: "#E17654",
     rugged: "#115E59",
     luxury: "#161616",
   };
-  // useEffect(() => {
-  //   fetch(`/api/host/vans/${id}`)
-  //     .then((res) => res.json())
-  //     .then((d) => setVanDetail(d.vans));
-  // }, [id]);
 
   console.log(van);
 
